@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Modifier"))
         {
             
-            ModifierBase modifier = other.GetComponent<ModifierBase>();
-            if (modifier)
+            
+            ModifierCrowd modifierCrowd=other.GetComponent<ModifierCrowd>();
+            if (modifierCrowd)
             {
-                modifier.Modify(this);
+                modifierCrowd.Modify(this);
             }
         }
     }

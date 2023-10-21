@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerCrowd : MonoBehaviour
@@ -10,12 +11,14 @@ public class PlayerCrowd : MonoBehaviour
 
     [SerializeField] private PlayerShooter shooterPrefab;
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
-    private List<PlayerShooter> _shooters = new List<PlayerShooter>();
+    public List<PlayerShooter> _shooters = new List<PlayerShooter>();
     public List<PlayerShooter> Shooters => _shooters;
     [ContextMenu("Set")]
     public void Debug_ResizeCrowd() => Set(crowdSizeForDebug);
 
     [SerializeField] private TMP_Text yearText;
+    [SerializeField] BoxCollider PlayerColider;
+    [SerializeField] private ControlAgressEnemy _cae;
 
     private int _year;
 
@@ -23,6 +26,7 @@ public class PlayerCrowd : MonoBehaviour
     {
         Set(startingCrowdSize);
         //yearText.text = _year.ToString();
+       
     }
 
     public void AddYearToCrowd(int yearToAdd)
@@ -44,6 +48,7 @@ public class PlayerCrowd : MonoBehaviour
             if (needToRemove) RemoveShooter();
             else if (needToAdd) AddShooter();
         }
+       
     }
 
     public bool CanAdd()
@@ -61,6 +66,7 @@ public class PlayerCrowd : MonoBehaviour
         PlayerShooter lastShooter = _shooters[_shooters.Count - 1];
         _shooters.Remove(lastShooter);
         Destroy(lastShooter.gameObject);
+        if (_shooters.Count <= 2) ColliderMinus();
     }
 
     public void AddShooter()
@@ -69,7 +75,18 @@ public class PlayerCrowd : MonoBehaviour
         int lastShooterIndex = _shooters.Count - 1;
         Vector3 position = spawnPoints[lastShooterIndex + 1].position;
         
-        PlayerShooter shooter = Instantiate(shooterPrefab, position, Quaternion.Euler(0,90,0), transform);
+        PlayerShooter shooter = Instantiate(shooterPrefab, position,Quaternion.identity /*Quaternion.Euler(0,0,0)*/, transform);
+        shooter.GetComponent<PlayerShooter>().CAE = _cae;
         _shooters.Add(shooter);
+        if(_shooters.Count >= 3)  ColliderPlus(); 
+
+    }
+    void ColliderPlus()
+    {
+        PlayerColider.size=new Vector3(2.5f,1,1);
+    }
+    void ColliderMinus()
+    {
+        PlayerColider.size = new Vector3(1f, 1, 1);
     }
 }

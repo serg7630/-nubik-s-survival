@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMoving : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
+    
     void Start()
     {
         
@@ -13,7 +14,14 @@ public class PlayerMoving : MonoBehaviour
     
     void Update()
     {
-        transform.position += Vector3.forward * speed * Time.deltaTime;
+
+         
+            transform.position += Vector3.forward * speed * Time.deltaTime;
+           
+
+        
+        
+        
         
     }
    
