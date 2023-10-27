@@ -1,15 +1,18 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
+
 using UnityEngine;
 
 public class PlayerCrowd : MonoBehaviour
 {
+    [Header("установка энергии")]
+    [SerializeField] private MenegerEnergy _menegerEnergy;
+
     [SerializeField] private int crowdSizeForDebug = 5;
     [SerializeField] private int startingCrowdSize = 1;
 
-    [SerializeField] private PlayerShooter shooterPrefab;
+    [SerializeField] private PlayerShooter[] shooterPrefabs;
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
     public List<PlayerShooter> _shooters = new List<PlayerShooter>();
     public List<PlayerShooter> Shooters => _shooters;
@@ -20,23 +23,42 @@ public class PlayerCrowd : MonoBehaviour
     [SerializeField] BoxCollider PlayerColider;
     [SerializeField] private ControlAgressEnemy _cae;
 
-    private int _year;
+    private float _year;
+    private float _recharge;
+
+    [Header("Расчет энергии")]
+    [SerializeField] MenegerEnergy _energy;
 
     private void Start()
     {
         Set(startingCrowdSize);
         //yearText.text = _year.ToString();
-       
+
+        SetEnergy();
+
+
     }
 
-    public void AddYearToCrowd(int yearToAdd)
+    public void AddRechargeToCrowd(float RechargTime)
+    {
+        _recharge -= RechargTime;
+        foreach (PlayerShooter shooter in _shooters)
+        {
+            shooter.UpdateWeaponRecharge(_recharge);
+        }
+        //yearText.text = _year.ToString();
+
+    }
+
+    public void AddYearToCrowd(float yearToAdd)
     {
         _year += yearToAdd;
         foreach (PlayerShooter shooter in _shooters)
         {
+            //Debug.LogError(yearToAdd);
             shooter.UpdateWeaponYear(yearToAdd);
         }
-        yearText.text = _year.ToString();
+        //yearText.text = _year.ToString();
     }
     public void Set(int amount)
     {
@@ -46,7 +68,7 @@ public class PlayerCrowd : MonoBehaviour
         while (amount != _shooters.Count)
         {
             if (needToRemove) RemoveShooter();
-            else if (needToAdd) AddShooter();
+            else if (needToAdd) AddShooter(1);
         }
        
     }
@@ -69,14 +91,16 @@ public class PlayerCrowd : MonoBehaviour
         if (_shooters.Count <= 2) ColliderMinus();
     }
 
-    public void AddShooter()
+    public void AddShooter(int index)
     {
         if (!CanAdd()) return;
         int lastShooterIndex = _shooters.Count - 1;
         Vector3 position = spawnPoints[lastShooterIndex + 1].position;
         
-        PlayerShooter shooter = Instantiate(shooterPrefab, position,Quaternion.identity /*Quaternion.Euler(0,0,0)*/, transform);
+        PlayerShooter shooter = Instantiate(shooterPrefabs[index-1], position,Quaternion.identity /*Quaternion.Euler(0,0,0)*/, transform);
         shooter.GetComponent<PlayerShooter>().CAE = _cae;
+        shooter.GetComponent<PlayerShooter>().enabled = true;
+        shooter.transform.localScale = new Vector3(1, 1, 1);
         _shooters.Add(shooter);
         if(_shooters.Count >= 3)  ColliderPlus(); 
 
@@ -88,5 +112,10 @@ public class PlayerCrowd : MonoBehaviour
     void ColliderMinus()
     {
         PlayerColider.size = new Vector3(1f, 1, 1);
+    }
+
+    public void SetEnergy()
+    {
+        _menegerEnergy.CalculationRealEnergy(_shooters);
     }
 }

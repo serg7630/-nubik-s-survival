@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ControlAgressEnemy : MonoBehaviour
 {
-
+    public static ControlAgressEnemy S;
      public  List<Transform> targetsEnemy = new List<Transform>();
+    [SerializeField] Transform _playerCrouwd;
     
     void Start()
     {
-        
+        if (S == null) S = this;
     }
 
    
@@ -20,9 +21,12 @@ public class ControlAgressEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject go=other.gameObject;
+        //Debug.LogError(go.name);
         if (go.CompareTag("enemyZomb"))
         {
-            go.GetComponent<ZombiControl>().SetTarget(this.transform);
+            ZombiControl ZC = go.GetComponent<ZombiControl>();
+            if (ZC)go.GetComponent<ZombiControl>().SetTarget(_playerCrouwd);
+                
             if (targetsEnemy.Count == 0)
             {
                 targetsEnemy.Add(go.transform);
@@ -59,12 +63,19 @@ public class ControlAgressEnemy : MonoBehaviour
         targetsEnemy.Remove(RearEnemy);
         if (RearEnemy.CompareTag("enemyZomb"))
         {
-            RearEnemy.GetComponent<ZombiControl>().SetIdle();
+            ZombiControl ZC=RearEnemy.GetComponent<ZombiControl>();
+            if (ZC)
+            {
+                ZC.SetIdle();
+                ZC.Dead = true;
+                ZC.DestroyThis();
+            }
         }
         //Debug.LogError("ermove");
     }
     public Transform FindNearEnemy(Transform target)
     {
+        if (targetsEnemy.Count == 1)return targetsEnemy[0];
         Transform trans = null;
         float min = float.PositiveInfinity;
         for (int i = 0; i < targetsEnemy.Count; i++)
@@ -78,7 +89,14 @@ public class ControlAgressEnemy : MonoBehaviour
             }
 
         }
+        //if (trans.GetComponent<ZombiControl>())
+        //{
+        //    if (trans.GetComponent<ZombiControl>().Dead) return null;
+        //}
+
         return trans;
     }
+
+    
 
     }

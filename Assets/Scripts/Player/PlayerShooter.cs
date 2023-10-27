@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
+    
+
     [Header("добавление цели")]
     public ControlAgressEnemy CAE;
-    [SerializeField] Transform EnemyTarget;
+     Transform EnemyTarget;
    [SerializeField] private Transform GoalTarget;
     public float SpeedRotation = 2;
 
@@ -17,10 +19,14 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private Shootable shootablePrefab;
     [SerializeField] private Transform shootFrom;
     [SerializeField] private float damageAddPerYear = 2f;
-    private float _shootDelay;
+    [SerializeField] private float _shootDelay;
     private float _runningTimer;
-    private float _damagePerShootable;
-    private int _year = 0;
+   [SerializeField] private float _damagePerShootable;
+    private float _year = 0;
+    private float _recharg = 0;
+    [Header("Максимальная прокачка ")]
+     public float maxShootDalay = 0.03f;
+     public float maxShootDamag = 100f;
 
     [Header("Анимация")]
     [SerializeField] Animator _animator;
@@ -36,14 +42,19 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
+
+        //поиск ближайшего врага
         if (EnemyTarget==null)
         {
             EnemyTarget = GoalTarget;
+            _animator.SetBool("Fire", false);
         }
         Vector3 directions = EnemyTarget.position - transform.position;
         if (transform.position.z > EnemyTarget.position.z)
         {
             CAE.RemoveEnemyFromList(EnemyTarget);
+            EnemyTarget = null;
+            
             return;
         }
         Quaternion rotation = Quaternion.LookRotation(directions);
@@ -70,7 +81,24 @@ public class PlayerShooter : MonoBehaviour
             //}
 
             _runningTimer = 0f;
-            Shoot();
+            if (!EnemyTarget)
+            {
+                
+                return;
+            }
+            ZombiControl ZC = EnemyTarget.GetComponent<ZombiControl>();
+            if (ZC)
+            {
+                if (ZC.Dead)
+                {
+                    EnemyTarget = null;
+                    return;
+                }
+            }
+            Enemy enemy = EnemyTarget.GetComponent<Enemy>();
+            if (enemy) enemy.shooter = this;
+            _animator.SetBool("Fire", true);
+            Shoot(EnemyTarget.transform);
         }
 
        
@@ -78,15 +106,41 @@ public class PlayerShooter : MonoBehaviour
 
     }
 
-    public void UpdateWeaponYear(int toAdd)
+    public void UpdateWeaponRecharge(float rechargTime)
+    {
+        _recharg = rechargTime;
+        _shootDelay += _recharg;
+        if (_shootDelay >= 1.2) _shootDelay = 1.2f;
+        if (_shootDelay <= 0.03) _shootDelay = 0.03f;
+        Debug.LogError(_shootDelay);
+    }
+    public void UpdateWeaponYear(float toAdd)
     {
         _year += toAdd;
+        Debug.Log(_year);
         float damageToAdd = _year * damageAddPerYear;
+
         _damagePerShootable = damagePerShootable + damageToAdd;
+        if (_damagePerShootable <= 4) _damagePerShootable = 4;
+        if (_damagePerShootable >= maxShootDamag) _damagePerShootable = maxShootDamag;
+        Debug.Log(_damagePerShootable);
     }
 
-    public void Shoot()
+    public void Shoot(Transform enemy)
     {
-        Instantiate(shootablePrefab, shootFrom.position, Quaternion.identity).Init(_damagePerShootable);
+       
+        Instantiate(shootablePrefab, shootFrom.position, this.transform.rotation ).Init(_damagePerShootable);
     }
+    public void TargetNuul()
+    {
+        EnemyTarget=null;
+    }
+
+    public float TimeShootDaley => _shootDelay;
+    public float ValueDamage => _damagePerShootable;
+
+
+   
+
+    
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class ModifierBase : MonoBehaviour
 {
-    public abstract void Modify(PlayerController playerController);
+    public abstract void Modify(PlayerController playerController, int index);
 }

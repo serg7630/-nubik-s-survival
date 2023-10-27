@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8925778942856424313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PosShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,28 @@ PrefabInstance:
       value: playerMain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2106145266610383287, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2106145266610383287, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323162407277330719, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
       propertyPath: m_Controller
@@ -117,17 +137,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3824014090407232257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef0578ced6168d54d97d77e43fa15d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CAE: {fileID: 0}
-  EnemyTarget: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 5
   defaultShootDelay: 0.5
-  damagePerShootable: 100
+  damagePerShootable: 4
   shootablePrefab: {fileID: 3618394322625594068, guid: 9b5cc9fbd40aee349b3dac09b3c32229, type: 3}
   shootFrom: {fileID: 8925778942856424313}
   damageAddPerYear: 2

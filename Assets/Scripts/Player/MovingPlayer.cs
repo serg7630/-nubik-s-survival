@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RakibJahan
-{
+
     public class MovingPlayer : MonoBehaviour
     {
         [SerializeField] private float maxDisplacement = 0.2f;
@@ -63,4 +62,4 @@ namespace RakibJahan
             return Mathf.Clamp(displacementX, -maxDisplacement, maxDisplacement);
         }
     }
-}
+

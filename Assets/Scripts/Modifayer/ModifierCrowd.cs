@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ModifierCrowd : ModifierBase
 {
-    
-
+    [Range(1, 3)]
+    public int LevelPlayerAdd = 1;
     [SerializeField] private ModifierView modifierView;
     [SerializeField] private int crowdModifyAmount = 2;
     private bool _isPositive;
@@ -14,18 +14,18 @@ public class ModifierCrowd : ModifierBase
     {
         
         _isPositive = crowdModifyAmount > 0;
-        modifierView.SetVisuals(_isPositive, crowdModifyAmount);
+        //modifierView.SetVisuals(_isPositive, crowdModifyAmount);
     }
 
 
-    public override void Modify(PlayerController playerController)
+    public override void Modify(PlayerController playerController, int index)
     {
-        var playerCrowd = playerController.GetComponent<PlayerCrowd>();
-        for (int i = 0; i < Mathf.Abs(crowdModifyAmount); i++)
-        {
-            if (_isPositive) playerCrowd.AddShooter();
-            else playerCrowd.RemoveShooter();
-        }
-        Destroy(this.gameObject);
+        //var playerCrowd = playerController.GetComponent<PlayerCrowd>();
+        //for (int i = 0; i < Mathf.Abs(crowdModifyAmount); i++)
+        //{
+        //    if (_isPositive) playerCrowd.AddShooter(index);
+        //    else playerCrowd.RemoveShooter();
+        //}
+        //Destroy(this.gameObject);
     }
 }

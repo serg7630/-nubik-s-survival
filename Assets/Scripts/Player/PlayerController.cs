@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("(other.CompareTag(\"Modifier\")");
+        
         if (other.CompareTag("Modifier"))
         {
-            
-            
-            ModifierCrowd modifierCrowd=other.GetComponent<ModifierCrowd>();
+
+            print(other.gameObject.name);
+            ModifierShootableYear modifierCrowd =other.GetComponent<ModifierShootableYear>();
             if (modifierCrowd)
             {
-                modifierCrowd.Modify(this);
+                modifierCrowd.Modify(this, modifierCrowd.indexModify);
             }
         }
     }

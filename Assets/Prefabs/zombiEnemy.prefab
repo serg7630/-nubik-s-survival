@@ -188,6 +188,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0ffe9b2f214678458c7858f5495af60, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3711865682879694530}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0ffe9b2f214678458c7858f5495af60, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8959142226422555031}
   m_SourcePrefab: {fileID: 100100000, guid: a0ffe9b2f214678458c7858f5495af60, type: 3}
 --- !u!1 &8133193091584528061 stripped
 GameObject:
@@ -224,7 +227,7 @@ Rigidbody:
   m_GameObject: {fileID: 8133193091584528061}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -240,7 +243,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &8245443679398049139
 CapsuleCollider:
@@ -279,6 +282,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 6875027578235655415}
   Staeps: 0
+  Dead: 0
+  Down: 0
   _transformTarget: {fileID: 0}
-  speedSteps: 1
+  speedSteps: 0.6
   Target: 0
+--- !u!114 &8959142226422555031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133193091584528061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bb737d3024d594086f48d83d8f9915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: {fileID: 0}
+  hitPoints: 20
+  shooter: {fileID: 0}
