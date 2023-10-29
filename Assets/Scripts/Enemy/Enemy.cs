@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _currentHitPoints -= damage;
         if (_currentHitPoints <= 0f)
         {
+            Debug.LogError("Dead "+ gameObject.name);
             MenegerCoins.S.AddCoins(addCoin);
             if (shooter)
             {

@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f8e29507b5eb545958909e07e090cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootableSurviveTime: 3
+  controller: {fileID: 0}
+  shootableSurviveTime: 0.8
 --- !u!114 &-91005130474997447
 MonoBehaviour:
   m_ObjectHideFlags: 0

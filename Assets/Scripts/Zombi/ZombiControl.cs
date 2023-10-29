@@ -5,14 +5,14 @@ using UnityEngine;
 public class ZombiControl : MonoBehaviour
 {
     [Header("Анимация")]
-    [SerializeField] Animator _animator;
+    [SerializeField]protected Animator _animator;
     public bool Staeps;
     public bool Dead=false;
     public bool Down=false;
 
 
     [Header("Управление ")]
-    [SerializeField] Transform _transformTarget;
+    [SerializeField] protected Transform _transformTarget;
     public float speedSteps ;
     
     public bool Target;
@@ -24,12 +24,17 @@ public class ZombiControl : MonoBehaviour
    
     void Update()
     {
+        move();
+    }
+
+    public virtual void move()
+    {
         if (Target)
         {
             _animator.SetBool("Steps", true);
             transform.LookAt(_transformTarget.position);
-            transform.position=Vector3.Lerp(transform.position, _transformTarget.position, speedSteps*Time.deltaTime);
-           
+            transform.position = Vector3.Lerp(transform.position, _transformTarget.position, speedSteps * Time.deltaTime);
+
         }
         else
         {
@@ -38,8 +43,9 @@ public class ZombiControl : MonoBehaviour
         Vector3 newRotation = transform.rotation.eulerAngles;
         newRotation.x = 0;
         transform.rotation = Quaternion.Euler(newRotation);
-        if(!Down)transform.position = new Vector3(this.transform.position.x, 0.5f, this.transform.position.z);
+        if (!Down) transform.position = new Vector3(this.transform.position.x, 0.5f, this.transform.position.z);
     }
+
     public void SetTarget(Transform target)
     {
         Target = true;

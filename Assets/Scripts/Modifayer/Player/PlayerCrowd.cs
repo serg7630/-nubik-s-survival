@@ -10,7 +10,10 @@ public class PlayerCrowd : MonoBehaviour
     [SerializeField] private MenegerEnergy _menegerEnergy;
 
     [SerializeField] private int crowdSizeForDebug = 5;
+    [Header("Стартовые данные")]
     [SerializeField] private int startingCrowdSize = 1;
+    [Range(1, 3)]
+    [SerializeField] private int startIndexShoot;
 
     [SerializeField] private PlayerShooter[] shooterPrefabs;
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
@@ -31,11 +34,13 @@ public class PlayerCrowd : MonoBehaviour
 
     private void Start()
     {
+
+        //_menegerEnergy.maxShooters = crowdSizeForDebug;
         Set(startingCrowdSize);
         //yearText.text = _year.ToString();
-
-        SetEnergy();
-
+        //Invoke("SetEnergy", .5f);
+        //SetEnergy();
+        Invoke("SetEnergy", .2f);
 
     }
 
@@ -47,6 +52,7 @@ public class PlayerCrowd : MonoBehaviour
             shooter.UpdateWeaponRecharge(_recharge);
         }
         //yearText.text = _year.ToString();
+
 
     }
 
@@ -68,7 +74,7 @@ public class PlayerCrowd : MonoBehaviour
         while (amount != _shooters.Count)
         {
             if (needToRemove) RemoveShooter();
-            else if (needToAdd) AddShooter(1);
+            else if (needToAdd) AddShooter(startIndexShoot);
         }
        
     }
@@ -89,6 +95,7 @@ public class PlayerCrowd : MonoBehaviour
         _shooters.Remove(lastShooter);
         Destroy(lastShooter.gameObject);
         if (_shooters.Count <= 2) ColliderMinus();
+        SetEnergy();
     }
 
     public void AddShooter(int index)
@@ -100,9 +107,11 @@ public class PlayerCrowd : MonoBehaviour
         PlayerShooter shooter = Instantiate(shooterPrefabs[index-1], position,Quaternion.identity /*Quaternion.Euler(0,0,0)*/, transform);
         shooter.GetComponent<PlayerShooter>().CAE = _cae;
         shooter.GetComponent<PlayerShooter>().enabled = true;
+        shooter.GetComponent<PlayerShooter>().PCrowd = this;
         shooter.transform.localScale = new Vector3(1, 1, 1);
         _shooters.Add(shooter);
-        if(_shooters.Count >= 3)  ColliderPlus(); 
+        if(_shooters.Count >= 3)  ColliderPlus();
+        SetEnergy();
 
     }
     void ColliderPlus()
@@ -117,5 +126,14 @@ public class PlayerCrowd : MonoBehaviour
     public void SetEnergy()
     {
         _menegerEnergy.CalculationRealEnergy(_shooters);
+    }
+
+    public void AnimateIdle()
+    {
+        foreach (var shooter in _shooters)
+        {
+            Debug.LogError("idle");
+            shooter.GetComponent<PlayerShooter>().PlayerIdle();
+        }
     }
 }

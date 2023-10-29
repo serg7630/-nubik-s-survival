@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    
+    public PlayerCrowd PCrowd;
 
     [Header("добавление цели")]
     public ControlAgressEnemy CAE;
@@ -57,6 +57,18 @@ public class PlayerShooter : MonoBehaviour
             
             return;
         }
+        if (EnemyTarget.CompareTag("enemyZomb"))
+        {
+            if (EnemyTarget.GetComponent<ZombiControl>())
+            {
+                if (EnemyTarget.GetComponent<ZombiControl>().Dead)
+                {
+                    CAE.RemoveEnemyFromList(EnemyTarget);
+                    EnemyTarget = null;
+                }
+                   
+            }
+        }
         Quaternion rotation = Quaternion.LookRotation(directions);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, SpeedRotation * Time.deltaTime);
 
@@ -98,6 +110,7 @@ public class PlayerShooter : MonoBehaviour
             Enemy enemy = EnemyTarget.GetComponent<Enemy>();
             if (enemy) enemy.shooter = this;
             _animator.SetBool("Fire", true);
+            _animator.SetBool("NoTarget", false);
             Shoot(EnemyTarget.transform);
         }
 
@@ -113,23 +126,27 @@ public class PlayerShooter : MonoBehaviour
         if (_shootDelay >= 1.2) _shootDelay = 1.2f;
         if (_shootDelay <= 0.03) _shootDelay = 0.03f;
         Debug.LogError(_shootDelay);
+        PCrowd.SetEnergy();
+
     }
     public void UpdateWeaponYear(float toAdd)
     {
         _year += toAdd;
-        Debug.Log(_year);
+        //Debug.Log(_year);
         float damageToAdd = _year * damageAddPerYear;
 
         _damagePerShootable = damagePerShootable + damageToAdd;
         if (_damagePerShootable <= 4) _damagePerShootable = 4;
         if (_damagePerShootable >= maxShootDamag) _damagePerShootable = maxShootDamag;
+        PCrowd.SetEnergy();
         Debug.Log(_damagePerShootable);
     }
 
     public void Shoot(Transform enemy)
     {
-       
-        Instantiate(shootablePrefab, shootFrom.position, this.transform.rotation ).Init(_damagePerShootable);
+        Vector3 directions = EnemyTarget.position - transform.position;
+
+        Instantiate(shootablePrefab, shootFrom.position, /*Quaternion.Euler(directions)*/this.transform.rotation).Init(_damagePerShootable);
     }
     public void TargetNuul()
     {
@@ -139,7 +156,12 @@ public class PlayerShooter : MonoBehaviour
     public float TimeShootDaley => _shootDelay;
     public float ValueDamage => _damagePerShootable;
 
-
+    public void PlayerIdle()
+    {
+        _animator.SetBool("final", true);
+        //_animator.SetBool("Idle", true);
+        _animator.SetBool("Run", false);
+    }
    
 
     

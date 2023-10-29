@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Modifier
   - enemyZomb
+  - PlayerCrowd
+  - StopPlayer
+  - ZombiBoss
   layers:
   - Default
   - TransparentFX

@@ -24,9 +24,11 @@ public class ControlAgressEnemy : MonoBehaviour
         //Debug.LogError(go.name);
         if (go.CompareTag("enemyZomb"))
         {
+            
             ZombiControl ZC = go.GetComponent<ZombiControl>();
+            //print(ZC);
             if (ZC)go.GetComponent<ZombiControl>().SetTarget(_playerCrouwd);
-                
+            //Debug.LogError(go.name);
             if (targetsEnemy.Count == 0)
             {
                 targetsEnemy.Add(go.transform);
@@ -61,7 +63,7 @@ public class ControlAgressEnemy : MonoBehaviour
     public void RemoveEnemyFromList(Transform RearEnemy)
     {
         targetsEnemy.Remove(RearEnemy);
-        if (RearEnemy.CompareTag("enemyZomb"))
+        if (RearEnemy.CompareTag("enemyZomb") )
         {
             ZombiControl ZC=RearEnemy.GetComponent<ZombiControl>();
             if (ZC)

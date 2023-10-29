@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+   
+    [SerializeField]private PlayerCrowd _playerCrowd;
+
+    private void Start()
+    {
+        _playerCrowd=GetComponent<PlayerCrowd>();
+    }
     public void OnTriggerEnter(Collider other)
     {
         
@@ -17,5 +26,12 @@ public class PlayerController : MonoBehaviour
                 modifierCrowd.Modify(this, modifierCrowd.indexModify);
             }
         }
+        else if (other.CompareTag("StopPlayer"))
+        {
+            Debug.LogError("stop");
+            transform.root.GetComponent<PlayerMoving>().enabled = false;
+            _playerCrowd.AnimateIdle();
+        }
+
     }
 }

@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0578ced6168d54d97d77e43fa15d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PCrowd: {fileID: 0}
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 2
@@ -167,6 +168,10 @@ MonoBehaviour:
   shootablePrefab: {fileID: 3618394322625594068, guid: f4c7cda6bd34fdd4787bd8c3dd85eab6, type: 3}
   shootFrom: {fileID: 9170585333822773327}
   damageAddPerYear: 2
+  _shootDelay: 0
+  _damagePerShootable: 0
+  maxShootDalay: 0.4
+  maxShootDamag: 100
   _animator: {fileID: 4720046490906402134}
   PlayerRun: 0
 --- !u!54 &1416334442547159838
