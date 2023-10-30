@@ -11,7 +11,7 @@ public class PlayerShooter : MonoBehaviour
     public ControlAgressEnemy CAE;
      Transform EnemyTarget;
    [SerializeField] private Transform GoalTarget;
-    public float SpeedRotation = 2;
+    public float SpeedRotation = 5;
 
     [Header("параметры стрельбы")]
     [SerializeField] private float defaultShootDelay = 1f;
@@ -31,7 +31,10 @@ public class PlayerShooter : MonoBehaviour
     [Header("Анимация")]
     [SerializeField] Animator _animator;
     public bool PlayerRun;
+    public bool Finishen;
 
+
+    private bool _finishScene = false;
     private void Start()
     {
         _shootDelay = defaultShootDelay;
@@ -42,12 +45,13 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
-
+        //if (_finishScene) return;
         //поиск ближайшего врага
         if (EnemyTarget==null)
         {
             EnemyTarget = GoalTarget;
             _animator.SetBool("Fire", false);
+            
         }
         Vector3 directions = EnemyTarget.position - transform.position;
         if (transform.position.z > EnemyTarget.position.z)
@@ -77,9 +81,19 @@ public class PlayerShooter : MonoBehaviour
             _runningTimer += Time.deltaTime;
         if (_runningTimer >= _shootDelay)
         {
-            if (CAE.targetsEnemy.Count==0) return;
+            if (CAE.targetsEnemy.Count == 0)
+            {
+                if (Finishen)
+                {
+                    //Debug.LogError("Victory");
+                    _animator.SetTrigger("FinalDance");
+                    _finishScene = true;
+                }
+                return;
+            }
             if (CAE.targetsEnemy.Count == 1)
             {
+                //Debug.LogError("1 enemy");
                 EnemyTarget = CAE.targetsEnemy[0];
             }
             else

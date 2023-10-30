@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("stop");
             transform.root.GetComponent<PlayerMoving>().enabled = false;
             _playerCrowd.AnimateIdle();
+            _playerCrowd.FinishDirect();
         }
 
     }

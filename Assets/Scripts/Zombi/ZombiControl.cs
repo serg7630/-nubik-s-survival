@@ -55,7 +55,7 @@ public class ZombiControl : MonoBehaviour
     {
         Invoke("SetIdle", 1f);
     }
-    public void SetIdle()
+    public virtual void SetIdle()
     {
         if (!_transformTarget) return;
         if (transform.position.z < _transformTarget.position.z)
@@ -64,7 +64,7 @@ public class ZombiControl : MonoBehaviour
             Destroy(this.gameObject, 3f);
         }
     }
-    public void destroyEnemy()
+    public virtual void destroyEnemy()
     {
         ControlAgressEnemy.S.RemoveEnemyFromList(this.transform);
         _animator.SetTrigger("Dead");
@@ -75,10 +75,10 @@ public class ZombiControl : MonoBehaviour
         Dead = true;
 
     }
-    public void DestroyThis()
+    public virtual void DestroyThis()
     {
         //_animator.SetTrigger("Dead");
-        Destroy(this.gameObject, 3.5f);
+        Destroy(this.gameObject, 6.5f);
         Invoke("ColisionTriger", 1.7f);
     }
     void ColisionTriger()

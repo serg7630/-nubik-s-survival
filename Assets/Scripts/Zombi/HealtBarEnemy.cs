@@ -5,24 +5,30 @@ using UnityEngine.UI;
 
 public class HealtBarEnemy : MonoBehaviour
 {
+    
+
     [SerializeField] private Image FullBar;
     public float MaxHealth;
-    public float Damage;
-
-   
+    [SerializeField] private float Damage;
 
 
-    // Update is called once per frame
+    private void Start()
+    {
+        ShowBarHealt(MaxHealth);
+    }
     void Update()
     {
         
     }
-    public void SetValue()
+    public void SetValue(float LostHealt)
     {
-
+        float RealHeal = LostHealt / MaxHealth;
+        
+        ShowBarHealt(RealHeal);
     }
-    private void ShowBarHealt()
+    private void ShowBarHealt(float Healt)
     {
-
+        FullBar.fillAmount = Healt;
+        //Debug.LogError(Healt);
     }
 }

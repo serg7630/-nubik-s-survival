@@ -136,4 +136,13 @@ public class PlayerCrowd : MonoBehaviour
             shooter.GetComponent<PlayerShooter>().PlayerIdle();
         }
     }
+
+    public void FinishDirect()
+    {
+        foreach (var shooter in _shooters)
+        {
+            Debug.LogError("finish");
+            shooter.GetComponent<PlayerShooter>().Finishen=true;
+        }
+    }
 }

@@ -162,7 +162,7 @@ MonoBehaviour:
   PCrowd: {fileID: 0}
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
-  SpeedRotation: 2
+  SpeedRotation: 4
   defaultShootDelay: 0.4
   damagePerShootable: 8
   shootablePrefab: {fileID: 3618394322625594068, guid: f4c7cda6bd34fdd4787bd8c3dd85eab6, type: 3}
@@ -174,6 +174,7 @@ MonoBehaviour:
   maxShootDamag: 100
   _animator: {fileID: 4720046490906402134}
   PlayerRun: 0
+  Finishen: 0
 --- !u!54 &1416334442547159838
 Rigidbody:
   m_ObjectHideFlags: 0
