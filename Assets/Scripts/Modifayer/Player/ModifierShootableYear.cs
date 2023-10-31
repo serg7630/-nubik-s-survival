@@ -13,8 +13,8 @@ public class ModifierShootableYear : ModifierBase
 {
     public TypeModify typeModify=TypeModify.None;
 
-    [SerializeField] private float yearToAdd = 5;
-    [SerializeField] private float reachargeTime = .05f;
+    [SerializeField] private float yearToAdd = 2;
+    [SerializeField] private float reachargeTime = .03f;
     [SerializeField] private ModifierView modifierView;
     public int indexModify;
     

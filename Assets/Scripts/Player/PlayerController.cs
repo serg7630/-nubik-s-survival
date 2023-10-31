@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-   
+    [SerializeField] private MovingPlayer movingPlayer;
     [SerializeField]private PlayerCrowd _playerCrowd;
 
     private void Start()
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("stop");
             transform.root.GetComponent<PlayerMoving>().enabled = false;
+            movingPlayer.enabled = false;
             _playerCrowd.AnimateIdle();
             _playerCrowd.FinishDirect();
         }

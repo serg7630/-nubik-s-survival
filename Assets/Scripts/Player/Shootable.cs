@@ -16,17 +16,28 @@ public class Shootable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.LogError(collision.transform.name);
-        if (collision.transform.CompareTag("enemyZomb"))
+        ////Debug.LogError(collision.transform.name);
+        //if (collision.transform.CompareTag("enemyZomb"))
+        //{
+            
+        //    IDamageable damageable = collision.transform.GetComponentInChildren<IDamageable>();
+        //    damageable.Damage(_damagePerHit);
+            
+        //    DestroyShootable();
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("enemyZomb"))
         {
-            
-            IDamageable damageable = collision.transform.GetComponentInChildren<IDamageable>();
+
+            IDamageable damageable = other.transform.GetComponentInChildren<IDamageable>();
             damageable.Damage(_damagePerHit);
-            
+
             DestroyShootable();
         }
     }
-
     private void DestroyShootable()
     {
         Destroy(gameObject);

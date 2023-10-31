@@ -106,7 +106,7 @@ public class PlayerCrowd : MonoBehaviour
         
         PlayerShooter shooter = Instantiate(shooterPrefabs[index-1], position,Quaternion.identity /*Quaternion.Euler(0,0,0)*/, transform);
         shooter.GetComponent<PlayerShooter>().CAE = _cae;
-        shooter.GetComponent<PlayerShooter>().enabled = true;
+        //shooter.GetComponent<PlayerShooter>().enabled = true;
         shooter.GetComponent<PlayerShooter>().PCrowd = this;
         shooter.transform.localScale = new Vector3(1, 1, 1);
         _shooters.Add(shooter);
@@ -143,6 +143,27 @@ public class PlayerCrowd : MonoBehaviour
         {
             Debug.LogError("finish");
             shooter.GetComponent<PlayerShooter>().Finishen=true;
+        }
+    }
+
+
+    public void upgradePlayerOnStart(int Recharge, int Damage)
+    {
+        for (int i = 0; i < Recharge; i++)
+        {
+            AddRechargeToCrowd(0.03f);
+        }
+        for (int i = 0; i < Damage; i++)
+        {
+            AddYearToCrowd(3);
+        }
+    }
+    public void StartGame()
+    {
+        foreach (var shooter in _shooters)
+        {
+            Debug.LogError("finish");
+            shooter.GetComponent<PlayerShooter>().enabled = true;
         }
     }
 }

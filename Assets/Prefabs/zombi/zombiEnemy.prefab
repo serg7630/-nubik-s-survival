@@ -299,6 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bb737d3024d594086f48d83d8f9915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healtBarEnemy: {fileID: 0}
+  healtBar: 0
   control: {fileID: 0}
-  hitPoints: 20
+  hitPoints: 60
   shooter: {fileID: 0}
+  addCoin: 100

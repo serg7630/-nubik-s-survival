@@ -65,7 +65,7 @@ public class MenegerEnergy : MonoBehaviour
     private void ShowEnergyGroup(float ValueEnergy)  //вывод энергии на экран
     {
         //Debug.Log(ValueEnergy);
-        //Debug.LogError("текущее значении энергии " + ValueEnergy + " и максимальгое " + valMaxEnergy);
+        Debug.LogError("текущее значении энергии " + ValueEnergy + " и максимальгое " + valMaxEnergy);
         fuulEnergy.fillAmount = (ValueEnergy* ValueCoofecientEnergy) / valMaxEnergy;
 
     }
