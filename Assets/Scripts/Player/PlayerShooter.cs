@@ -136,10 +136,11 @@ public class PlayerShooter : MonoBehaviour
     public void UpdateWeaponRecharge(float rechargTime)
     {
         _recharg = rechargTime;
+        //Debug.LogError(_recharg+" получаемое  значение у игрока");
         _shootDelay += _recharg;
         if (_shootDelay >= 1.2) _shootDelay = 1.2f;
         if (_shootDelay <= 0.03) _shootDelay = 0.03f;
-        Debug.LogError(_shootDelay);
+        //Debug.LogError(_shootDelay+" итоговое значение");
         PCrowd.SetEnergy();
 
     }

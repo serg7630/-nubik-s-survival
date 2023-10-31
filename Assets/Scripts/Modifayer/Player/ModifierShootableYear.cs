@@ -38,18 +38,29 @@ public class ModifierShootableYear : ModifierBase
     public override void Modify(PlayerController playerController, int index)
     {
 
-        Debug.LogError(typeModify);
+        //Debug.LogError(typeModify+" тип модификатора и бонус перезарядки"+ reachargeTime);
+
         var playerCrowd = playerController.GetComponent<PlayerCrowd>();
         switch (index) {
             case 1: 
                 playerCrowd.AddYearToCrowd(yearToAdd);
                 break;
             case 2:
+                //print("бонус перезарядки");
                 playerCrowd.AddRechargeToCrowd(reachargeTime);
+                
                 break;
 
         }
         Destroy(this.gameObject);
             
+    }
+    public void AddRecharge()
+    {
+        reachargeTime += .03f ;
+    }
+    public void AddDamage()
+    {
+        yearToAdd++;
     }
 }

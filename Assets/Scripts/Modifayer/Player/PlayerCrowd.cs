@@ -46,10 +46,12 @@ public class PlayerCrowd : MonoBehaviour
 
     public void AddRechargeToCrowd(float RechargTime)
     {
+        _recharge = 0;
         _recharge -= RechargTime;
         foreach (PlayerShooter shooter in _shooters)
         {
             shooter.UpdateWeaponRecharge(_recharge);
+            //Debug.LogError(_recharge+" первое передаваемое значение");
         }
         //yearText.text = _year.ToString();
 
@@ -147,17 +149,17 @@ public class PlayerCrowd : MonoBehaviour
     }
 
 
-    public void upgradePlayerOnStart(int Recharge, int Damage)
-    {
-        for (int i = 0; i < Recharge; i++)
-        {
-            AddRechargeToCrowd(0.03f);
-        }
-        for (int i = 0; i < Damage; i++)
-        {
-            AddYearToCrowd(3);
-        }
-    }
+    //public void upgradePlayerOnStart(int Recharge, int Damage)
+    //{
+    //    for (int i = 0; i < Recharge; i++)
+    //    {
+    //        AddRechargeToCrowd(0.03f);
+    //    }
+    //    for (int i = 0; i < Damage; i++)
+    //    {
+    //        AddYearToCrowd(3);
+    //    }
+    //}
     public void StartGame()
     {
         foreach (var shooter in _shooters)

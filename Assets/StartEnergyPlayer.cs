@@ -7,6 +7,7 @@ public class StartEnergyPlayer : MonoBehaviour
     public static StartEnergyPlayer S;
 
     [SerializeField] PlayerCrowd playerCrowd;
+    [SerializeField] ModifierShootableYear shootableYear;
 
     public int CountDamageUpgrate;
     public int CountRechargeUpgrate;
@@ -18,7 +19,7 @@ public class StartEnergyPlayer : MonoBehaviour
 
    public void upgratePlayers()
     {
-        playerCrowd.upgradePlayerOnStart(CountRechargeUpgrate, CountDamageUpgrate);
+        //playerCrowd.upgradePlayerOnStart(CountRechargeUpgrate, CountDamageUpgrate);
         playerCrowd.StartGame();
         playerCrowd.SetEnergy();
         GetComponent<PlayerMoving>().enabled = true;
@@ -29,10 +30,10 @@ public class StartEnergyPlayer : MonoBehaviour
     }
     public void AddRecharge()
     {
-        CountRechargeUpgrate++;
+        shootableYear.AddRecharge();
     }
     public void AddPower()
     {
-        CountDamageUpgrate++;
+        shootableYear.AddDamage();
     }
 }

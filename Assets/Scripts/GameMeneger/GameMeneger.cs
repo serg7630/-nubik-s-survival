@@ -57,8 +57,8 @@ public class GameMeneger : MonoBehaviour
 
 
 
-    [DllImport("__Internal")]
-    private static extern void ShowAds();
+    //[DllImport("__Internal")]
+    //private static extern void ShowAds();
 
 
     void Start()
