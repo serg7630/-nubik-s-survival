@@ -99,6 +99,15 @@ public class PlayerCrowd : MonoBehaviour
         if (_shooters.Count <= 2) ColliderMinus();
         SetEnergy();
     }
+    public void RemoveThisShooter(PlayerShooter playerShooter)
+    {
+        if (!CanRemove()) return;
+        _shooters.Remove(playerShooter);
+        
+        Destroy(playerShooter.gameObject);
+        if (_shooters.Count <= 2) ColliderMinus();
+        SetEnergy();
+    }
 
     public void AddShooter(int index)
     {

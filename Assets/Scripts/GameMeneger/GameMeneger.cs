@@ -40,6 +40,8 @@ public class GameMeneger : MonoBehaviour
     //int Coins;
     bool FinishActive;
     bool GameOverActive;
+    bool Victory;
+
     public string ActiveScene;
     [SerializeField] string MaxScene;
 
@@ -364,6 +366,8 @@ public class GameMeneger : MonoBehaviour
     }
     public void GameVictoryInvoke()
     {
-        Invoke("GameFinish", 3f);
+        if (Victory) return;
+        Victory = true;
+        Invoke("GameVictory", 4f);
     }
 }

@@ -87,6 +87,7 @@ public class PlayerShooter : MonoBehaviour
                 {
                     //Debug.LogError("Victory");
                     _animator.SetTrigger("FinalDance");
+                    GameMeneger.S.GameVictoryInvoke();
                     _finishScene = true;
                 }
                 return;
