@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Modifier"))
         {
 
-            print(other.gameObject.name);
+            //print(other.gameObject.name);
             ModifierShootableYear modifierCrowd =other.GetComponent<ModifierShootableYear>();
             if (modifierCrowd)
             {
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
             _playerCrowd.AnimateIdle();
             _playerCrowd.FinishDirect();
         }
+      
 
     }
 }

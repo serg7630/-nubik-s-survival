@@ -98,7 +98,7 @@ public class MenegerCoins : MonoBehaviour
 
     private void chekCoinsForBuy(int recherge,int damage)
     {
-        Debug.LogError("recharge " + recherge + "  дамаг " + damage+ "всего денег "+Coin);
+        //Debug.LogError("recharge " + recherge + "  дамаг " + damage+ "всего денег "+Coin);
 
         if(recherge>Coin)byuRecharge.interactable = false;
         if(damage>Coin)byuDamage.interactable=false;

@@ -153,24 +153,40 @@ public class GameMeneger : MonoBehaviour
     }
 
     //финиш и победа
-    public void GameFinish()
+    public void GameOverFinish()
     {
        
         if(FinishActive) return;
         //BagroundSource.Pause();
         
         _buttomPauseUI.SetActive(false);
+        
+        _panelEnegry.SetActive(false);
+        _panelCoins.SetActive(false);
         if (GameOverActive) return;
         _panelFinish.SetActive(true);
         
         FinishActive = true;
         ActiveScene = SceneManager.GetActiveScene().name;
 
-        LevelPlus(ActiveScene);
+        //LevelPlus(ActiveScene);
        
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
        
+    }
+    private void GameVictory()
+    {
+        if (FinishActive) return;
+        //BagroundSource.Pause();
+
+        _buttomPauseUI.SetActive(false);
+
+        _panelEnegry.SetActive(false);
+        _panelCoins.SetActive(false);
+        _panelVictory.SetActive(true);
+
+        FinishActive = true;
     }
     //пауза
     public void Pause()
@@ -178,10 +194,11 @@ public class GameMeneger : MonoBehaviour
         string ActiveScene = SceneManager.GetActiveScene().name;
         //LevelName.text = ActiveScene;
         _panelPause.SetActive(true);
-        
-        
-        
-        
+
+        _buttomPauseUI.SetActive(false);
+        _panelEnegry.SetActive(false);
+        _panelCoins.SetActive(false);
+
         Time.timeScale = 0f;
         BagroundManeger.S.GamePause = true;
       
@@ -194,7 +211,9 @@ public class GameMeneger : MonoBehaviour
         if (Time.timeScale < 1) Time.timeScale = 1;
         //BagroundSource.Play();
         _buttomPauseUI.SetActive(true);
-      
+        _panelEnegry.SetActive(true);
+        _panelCoins.SetActive(true);
+
         _panelPause.SetActive(false);
        
         
@@ -338,5 +357,13 @@ public class GameMeneger : MonoBehaviour
             return;
         }
         //if (PauseOnStart.activeInHierarchy) Time.timeScale = 0;
+    }
+    public void GameOverFinishInvoke()
+    {
+        Invoke("GameOverFinish",3f);
+    }
+    public void GameVictoryInvoke()
+    {
+        Invoke("GameFinish", 3f);
     }
 }

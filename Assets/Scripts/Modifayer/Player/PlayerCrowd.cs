@@ -134,7 +134,7 @@ public class PlayerCrowd : MonoBehaviour
     {
         foreach (var shooter in _shooters)
         {
-            Debug.LogError("idle");
+            //Debug.LogError("idle");
             shooter.GetComponent<PlayerShooter>().PlayerIdle();
         }
     }
@@ -143,7 +143,7 @@ public class PlayerCrowd : MonoBehaviour
     {
         foreach (var shooter in _shooters)
         {
-            Debug.LogError("finish");
+            //Debug.LogError("finish");
             shooter.GetComponent<PlayerShooter>().Finishen=true;
         }
     }
@@ -164,8 +164,18 @@ public class PlayerCrowd : MonoBehaviour
     {
         foreach (var shooter in _shooters)
         {
-            Debug.LogError("finish");
+            //Debug.LogError("finish");
             shooter.GetComponent<PlayerShooter>().enabled = true;
         }
+    }
+    public void DeadPlayers()
+    {
+        foreach (var shooter in _shooters)
+        {
+            //Debug.LogError("Dead");
+            shooter.GetComponent<PlayerShooter>().DeadPlayer();
+            shooter.GetComponent<PlayerShooter>().enabled=false;
+        }
+        GameMeneger.S.GameOverFinishInvoke();
     }
 }

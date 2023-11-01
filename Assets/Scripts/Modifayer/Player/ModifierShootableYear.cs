@@ -7,7 +7,7 @@ public enum TypeModify
     None,
     firepower,
     recharge
-
+    
 }
 public class ModifierShootableYear : ModifierBase
 {
@@ -17,6 +17,7 @@ public class ModifierShootableYear : ModifierBase
     [SerializeField] private float reachargeTime = .03f;
     [SerializeField] private ModifierView modifierView;
     public int indexModify;
+    [SerializeField] bool StartModifier;
     
 
     private void Start()
@@ -33,6 +34,7 @@ public class ModifierShootableYear : ModifierBase
             indexModify = 2;
             modifierView.SetVisuals(isPositive, indexModify);
         }
+        if (StartModifier) indexModify = 3;
     }
 
     public override void Modify(PlayerController playerController, int index)
@@ -49,6 +51,11 @@ public class ModifierShootableYear : ModifierBase
                 //print("бонус перезарядки");
                 playerCrowd.AddRechargeToCrowd(reachargeTime);
                 
+                break;
+            case 3:
+                //print("бонус перезарядки");
+                playerCrowd.AddRechargeToCrowd(reachargeTime);
+                playerCrowd.AddYearToCrowd(yearToAdd);
                 break;
 
         }

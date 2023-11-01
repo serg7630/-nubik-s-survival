@@ -9,6 +9,7 @@ TagManager:
   - PlayerCrowd
   - StopPlayer
   - ZombiBoss
+  - MainPlayer
   layers:
   - Default
   - TransparentFX

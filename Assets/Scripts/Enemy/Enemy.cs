@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public PlayerShooter shooter;
     [SerializeField] private int addCoin=100;
     private bool _dead = false;
-
+    [SerializeField] public bool ItSLate=false; 
     private void Start()
     {
         _currentHitPoints = hitPoints;
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Damage(float damage)
     {
+        if (ItSLate) return;
         _currentHitPoints -= damage;
         if(healtBar) healtBarEnemy.SetValue(_currentHitPoints);
         if (_currentHitPoints <= 0f)

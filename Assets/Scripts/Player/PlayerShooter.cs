@@ -154,7 +154,7 @@ public class PlayerShooter : MonoBehaviour
         if (_damagePerShootable <= 4) _damagePerShootable = 4;
         if (_damagePerShootable >= maxShootDamag) _damagePerShootable = maxShootDamag;
         PCrowd.SetEnergy();
-        Debug.Log(_damagePerShootable);
+        //Debug.Log(_damagePerShootable);
     }
 
     public void Shoot(Transform enemy)
@@ -177,7 +177,12 @@ public class PlayerShooter : MonoBehaviour
         //_animator.SetBool("Idle", true);
         _animator.SetBool("Run", false);
     }
-   
+   public void DeadPlayer()
+    {
+        _animator.SetBool("Fire", false);
+        _animator.SetBool("Run", false);
+        _animator.SetTrigger("Dead");
+    }
 
     
 }

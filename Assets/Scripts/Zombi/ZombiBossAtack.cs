@@ -5,6 +5,8 @@ using UnityEngine;
 public class ZombiBossAtack : ZombiControl
 {
     //[SerializeField] Animator _animator;
+    [SerializeField] private bool _finalAttack;
+    
     void Start()
     {
         
@@ -30,14 +32,13 @@ public class ZombiBossAtack : ZombiControl
             //Debug.LogError("Steps");
             float distance = Vector3.Distance(transform.position, _transformTarget.position);
             //print(distance);
-            if (distance <= 3.5f)
+            if (distance <= 5.5f)
             {
                 _animator.SetBool("NearAttack", true);
+                GetComponent<Enemy>().ItSLate = true;
+                this.enabled = false;
             }
-            else
-            {
-                _animator.SetBool("NearAttack", false);
-            }
+
 
 
         }

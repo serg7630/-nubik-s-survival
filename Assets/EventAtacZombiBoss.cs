@@ -12,11 +12,23 @@ public class EventAtacZombiBoss : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.transform.CompareTag("enemyZomb"))
-        //{
-        //    Enemy enemy = collision.transform.GetComponent<Enemy>();
-        //    enemy.Damage(damage);
-        //}
+        if (collision.transform.CompareTag("MainPlayer"))
+        {
+            Debug.LogError("PlayerDead");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("MainPlayer"))
+        {
+            //Debug.LogError("PlayerDead");
+            //if (GetComponent<ZombiBossAtack>().Dead)
+            //{
+            //    return;
+            //}
+
+            other.GetComponent<PlayerCrowd>().DeadPlayers();
+        }
     }
     void Update()
     {
