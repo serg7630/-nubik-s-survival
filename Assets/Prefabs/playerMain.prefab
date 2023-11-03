@@ -161,6 +161,7 @@ MonoBehaviour:
   _animator: {fileID: 7546446337731085249}
   PlayerRun: 0
   Finishen: 0
+  _startScene: 1
 --- !u!54 &7300877834600689061
 Rigidbody:
   m_ObjectHideFlags: 0

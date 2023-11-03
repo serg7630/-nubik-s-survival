@@ -32,20 +32,28 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] Animator _animator;
     public bool PlayerRun;
     public bool Finishen;
+    private bool _finishScene;
 
 
-    private bool _finishScene = false;
+   [SerializeField] private bool _startScene =true;
     private void Start()
     {
         _shootDelay = defaultShootDelay;
         _damagePerShootable = damagePerShootable;
         _animator.SetBool("Run", true);
+        print("idle");
         GoalTarget = GameObject.Find("GoalTarget").transform;
     }
 
     private void Update()
     {
-        //if (_finishScene) return;
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if (GameMeneger.S.PauseOnStartTrue) return;
+        //    _startScene = false;
+        //    _animator.SetBool("Fire", true);
+        //}
+        //if (_startScene) return;
         //поиск ближайшего врага
         if (EnemyTarget==null)
         {
@@ -185,5 +193,9 @@ public class PlayerShooter : MonoBehaviour
         _animator.SetTrigger("Dead");
     }
 
-    
+    public void startGame()
+    {
+        _animator.SetBool("Run", true);
+        _animator.SetBool("Idle", false);
+    }
 }

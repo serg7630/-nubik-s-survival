@@ -25,6 +25,7 @@ public class PlayerCrowd : MonoBehaviour
     [SerializeField] private TMP_Text yearText;
     [SerializeField] BoxCollider PlayerColider;
     [SerializeField] private ControlAgressEnemy _cae;
+    [SerializeField] private MovingPlayer _movingPlayer;
 
     private float _year;
     private float _recharge;
@@ -34,7 +35,7 @@ public class PlayerCrowd : MonoBehaviour
 
     private void Start()
     {
-
+        _movingPlayer=GetComponent<MovingPlayer>();
         //_menegerEnergy.maxShooters = crowdSizeForDebug;
         Set(startingCrowdSize);
         //yearText.text = _year.ToString();
@@ -117,7 +118,7 @@ public class PlayerCrowd : MonoBehaviour
         
         PlayerShooter shooter = Instantiate(shooterPrefabs[index-1], position,Quaternion.identity /*Quaternion.Euler(0,0,0)*/, transform);
         shooter.GetComponent<PlayerShooter>().CAE = _cae;
-        //shooter.GetComponent<PlayerShooter>().enabled = true;
+        shooter.GetComponent<PlayerShooter>().enabled = true;
         shooter.GetComponent<PlayerShooter>().PCrowd = this;
         shooter.transform.localScale = new Vector3(1, 1, 1);
         _shooters.Add(shooter);
@@ -128,10 +129,12 @@ public class PlayerCrowd : MonoBehaviour
     void ColliderPlus()
     {
         PlayerColider.size=new Vector3(2.5f,1,1);
+        _movingPlayer.maxPositionX -= 2f;
     }
     void ColliderMinus()
     {
         PlayerColider.size = new Vector3(1f, 1, 1);
+        _movingPlayer.maxPositionX += 2f;
     }
 
     public void SetEnergy()
@@ -175,6 +178,7 @@ public class PlayerCrowd : MonoBehaviour
         {
             //Debug.LogError("finish");
             shooter.GetComponent<PlayerShooter>().enabled = true;
+            shooter.GetComponent<PlayerShooter>().startGame();
         }
     }
     public void DeadPlayers()

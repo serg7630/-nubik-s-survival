@@ -8,6 +8,7 @@ public class StartEnergyPlayer : MonoBehaviour
 
     [SerializeField] PlayerCrowd playerCrowd;
     [SerializeField] ModifierShootableYear shootableYear;
+    [SerializeField] private MovingPlayer movingPlayer;
 
     public int CountDamageUpgrate;
     public int CountRechargeUpgrate;
@@ -23,6 +24,8 @@ public class StartEnergyPlayer : MonoBehaviour
         playerCrowd.StartGame();
         playerCrowd.SetEnergy();
         GetComponent<PlayerMoving>().enabled = true;
+        movingPlayer.enabled = true;
+
     }
     void Update()
     {

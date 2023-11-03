@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMoving : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
-    
+    [SerializeField] private PlayerCrowd playerCrowd;
     void Start()
     {
         

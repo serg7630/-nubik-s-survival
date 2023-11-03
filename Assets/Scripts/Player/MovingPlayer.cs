@@ -5,7 +5,7 @@ using UnityEngine;
     public class MovingPlayer : MonoBehaviour
     {
         [SerializeField] private float maxDisplacement = 0.2f;
-        [SerializeField] private float maxPositionX = 2f;
+        public float maxPositionX = 2f;
         private Vector2 _anchorPosition;
 
 

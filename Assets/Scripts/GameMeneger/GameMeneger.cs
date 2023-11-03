@@ -308,7 +308,7 @@ public class GameMeneger : MonoBehaviour
         PauseOnStartTrue = true;
        
         //BagroundSource.Pause();
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         //ShowAds();
        
         //Debug.Log("tryPause");
@@ -336,7 +336,7 @@ public class GameMeneger : MonoBehaviour
         StartEnergyPlayer.S.upgratePlayers();
         _panelEnegry.SetActive(true);
         _panelCoins.SetActive(true);
-
+        MenegerCoins.S.UpdateShowCoin();
 
 
     }

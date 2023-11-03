@@ -1,2 +1,2 @@
-Build path: D:/xampp New/htdocs/Games/нубик и выживание
-Build number: 19
+Build path: D:/xampp New/htdocs/Games/NubSurvival
+Build number: 24

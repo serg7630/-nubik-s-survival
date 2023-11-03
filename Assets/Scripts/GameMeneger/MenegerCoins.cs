@@ -55,7 +55,7 @@ public class MenegerCoins : MonoBehaviour
         PlayerPrefs.SetInt("KeyCoins", Coin);
         PlayerPrefs.Save();
     }
-    private void UpdateShowCoin()
+    public void UpdateShowCoin()
     {
         countCoint.text = Coin.ToString();
     }
