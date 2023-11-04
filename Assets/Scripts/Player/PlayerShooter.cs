@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
+    public bool purchased;
     public PlayerCrowd PCrowd;
+    public int CostPlayer;
 
     [Header("добавление цели")]
     public ControlAgressEnemy CAE;
@@ -14,8 +16,8 @@ public class PlayerShooter : MonoBehaviour
     public float SpeedRotation = 5;
 
     [Header("параметры стрельбы")]
-    [SerializeField] private float defaultShootDelay = 1f;
-    [SerializeField] private float damagePerShootable = 100f;
+    public float defaultShootDelay = 1f;
+    public float damagePerShootable = 100f;
     [SerializeField] private Shootable shootablePrefab;
     [SerializeField] private Transform shootFrom;
     [SerializeField] private float damageAddPerYear = 2f;

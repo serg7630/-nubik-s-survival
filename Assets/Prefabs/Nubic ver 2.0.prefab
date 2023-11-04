@@ -162,7 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0578ced6168d54d97d77e43fa15d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchased: 0
   PCrowd: {fileID: 0}
+  CostPlayer: 5000
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 4

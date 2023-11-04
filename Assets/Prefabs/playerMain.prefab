@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PCrowd: {fileID: 0}
+  CostPlayer: 1000
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 2

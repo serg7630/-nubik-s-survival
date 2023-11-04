@@ -53,6 +53,9 @@ public class GameMeneger : MonoBehaviour
     [SerializeField] int Coins;
     string KeyStringCoins = "KeyCoins";
 
+    [SerializeField] int LastLevel;
+    string KeyStringLastLevel = "KeyLevel";
+
     [SerializeField] GameObject ButtomyJump;
 
 
@@ -224,11 +227,11 @@ public class GameMeneger : MonoBehaviour
         BagroundManeger.S.GamePause = false;
     }
     //выход в меню уровней
-    public void loadSceneLevels()
+    public void loadSceneMainMenu()
     {
         //LevelPlus(ActiveScene);
         if (Time.timeScale < 1) Time.timeScale = 1;
-        SceneManager.LoadScene("LevelsMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
 
@@ -253,8 +256,10 @@ public class GameMeneger : MonoBehaviour
     public void ContiniumVictory()
     {
         if (Time.timeScale < 1) Time.timeScale = 1;
-       
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LastLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        PlayerPrefs.SetInt(KeyStringLastLevel,LastLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(LastLevel);
     }
 
     //запуск последнего уровня

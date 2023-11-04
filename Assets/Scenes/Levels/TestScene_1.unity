@@ -1631,7 +1631,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 176272944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 390535482}
+        m_TargetAssemblyTypeName: GameMeneger, Assembly-CSharp
+        m_MethodName: loadSceneMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &176272944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,7 +2499,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 263135068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 390535482}
+        m_TargetAssemblyTypeName: GameMeneger, Assembly-CSharp
+        m_MethodName: loadSceneMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &263135068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,6 +3615,7 @@ MonoBehaviour:
   AvailibleLevels: 0
   GetLevel: 0
   Coins: 0
+  LastLevel: 0
   ButtomyJump: {fileID: 0}
 --- !u!4 &390535483
 Transform:
@@ -6093,7 +6118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709175067}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31651488, y: -1e-45, z: -0, w: 0.94858754}
+  m_LocalRotation: {x: 0.31651488, y: -1e-45, z: 1e-45, w: 0.94858754}
   m_LocalPosition: {x: -1.561403, y: 10.522072, z: -12.376701}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8604,7 +8629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31651488, y: -1e-45, z: 0, w: 0.94858754}
+  m_LocalRotation: {x: 0.31651488, y: -1e-45, z: 1e-45, w: 0.94858754}
   m_LocalPosition: {x: 0, y: 11.8, z: -13.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13752,7 +13777,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1654275821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 390535482}
+        m_TargetAssemblyTypeName: GameMeneger, Assembly-CSharp
+        m_MethodName: loadSceneMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1654275821
 MonoBehaviour:
   m_ObjectHideFlags: 0

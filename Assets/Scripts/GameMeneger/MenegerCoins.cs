@@ -46,11 +46,11 @@ public class MenegerCoins : MonoBehaviour
         
     }
 
-    private void GetCoinaPrefer()
+    public void GetCoinaPrefer()
     {
         Coin = PlayerPrefs.GetInt("KeyCoins");
     }
-    private void setCoinsPrefer()
+    public void setCoinsPrefer()
     {
         PlayerPrefs.SetInt("KeyCoins", Coin);
         PlayerPrefs.Save();
