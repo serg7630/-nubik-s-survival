@@ -40,6 +40,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6af7a7a35d0a1384ab7a607ad15080e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4350755
       objectReference: {fileID: 0}
@@ -145,12 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0578ced6168d54d97d77e43fa15d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchased: 0
   PCrowd: {fileID: 0}
   CostPlayer: 1000
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 2
-  defaultShootDelay: 0.5
+  defaultShootDelay: 0.55
   damagePerShootable: 6
   shootablePrefab: {fileID: 3618394322625594068, guid: 9b5cc9fbd40aee349b3dac09b3c32229, type: 3}
   shootFrom: {fileID: 8925778942856424313}

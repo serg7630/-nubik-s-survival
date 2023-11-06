@@ -202,7 +202,9 @@ MonoBehaviour:
   LevelPlayerAdd: 2
   shooterPrefabs:
   - {fileID: 8668238271588377023, guid: 298513d17268fc9468fae0f30118f603, type: 3}
-  - {fileID: -5999272719775019097, guid: 34721b4bbb1e8e748812a3246960bbed, type: 3}
+  - {fileID: -5852641518115152999, guid: 4823c9d432e00754f839287740654dc9, type: 3}
+  - {fileID: 8126390729045704088, guid: 07007e8c20935cb4898af1f173d9bc06, type: 3}
+  - {fileID: 2012119990823878058, guid: f79df08d28804814abafd81fd47a30a0, type: 3}
   PosPers: {fileID: 4047092862366101197}
 --- !u!114 &1131866173280321826
 MonoBehaviour:

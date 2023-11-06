@@ -6,7 +6,7 @@ public class LoaderSceneInMainMenu : MonoBehaviour
     [SerializeField] private MenegerModify menegerModify;
 
     [SerializeField] private int GetAcniveScene;
-    string KeyStringLevelsAvaileble = "KeyLevels";
+    string KeyStringLevelsAvaileble = "KeyLevel";
 
     string KeyStringActivePlayer = "KeyPlayer";
 
@@ -22,6 +22,8 @@ public class LoaderSceneInMainMenu : MonoBehaviour
         PlayerPrefs.SetInt(KeyStringActivePlayer, activePlayer);
         if(GetAcniveScene == 0) GetAcniveScene = 1;
         SceneManager.LoadScene(GetAcniveScene);
+
+        
     }
     void Update()
     {

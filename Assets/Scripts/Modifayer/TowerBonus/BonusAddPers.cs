@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BonusAddPers : ModifierBase
 {
-    [Range(1, 3)]
-    public int LevelPlayerAdd = 1;
+    [Range(1, 4)]
+    public int LevelPlayerAdd ;
     [SerializeField] private PlayerShooter[] shooterPrefabs;
     [SerializeField] private Transform PosPers;
 

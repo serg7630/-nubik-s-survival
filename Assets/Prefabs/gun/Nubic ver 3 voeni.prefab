@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aa69b19809e487748a03421917f0faea, type: 3}
       propertyPath: m_Name
-      value: Nubic ver 2.0
+      value: Nubic ver 3 voeni
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aa69b19809e487748a03421917f0faea, type: 3}
       propertyPath: m_Layer
@@ -119,6 +119,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: aa69b19809e487748a03421917f0faea, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 2389cb01729312a43a372d71ea41b9a0, type: 3}
     - target: {fileID: 5866666021909216657, guid: aa69b19809e487748a03421917f0faea, type: 3}
       propertyPath: m_Controller
       value: 
@@ -164,18 +168,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   purchased: 0
   PCrowd: {fileID: 0}
-  CostPlayer: 5000
+  CostPlayer: 25000
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 4
   defaultShootDelay: 0.4
-  damagePerShootable: 8
+  damagePerShootable: 26
   shootablePrefab: {fileID: 3618394322625594068, guid: f4c7cda6bd34fdd4787bd8c3dd85eab6, type: 3}
   shootFrom: {fileID: 9170585333822773327}
   damageAddPerYear: 2
   _shootDelay: 0
   _damagePerShootable: 0
-  maxShootDalay: 0.4
+  maxShootDalay: 0.03
   maxShootDamag: 100
   _animator: {fileID: 4720046490906402134}
   PlayerRun: 0

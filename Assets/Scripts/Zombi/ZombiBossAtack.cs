@@ -32,7 +32,7 @@ public class ZombiBossAtack : ZombiControl
             //Debug.LogError("Steps");
             float distance = Vector3.Distance(transform.position, _transformTarget.position);
             //print(distance);
-            if (distance <= 5.5f)
+            if (distance <= 4f)
             {
                 _animator.SetBool("NearAttack", true);
                 GetComponent<Enemy>().ItSLate = true;

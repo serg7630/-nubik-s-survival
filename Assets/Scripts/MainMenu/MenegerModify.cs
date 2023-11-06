@@ -29,12 +29,49 @@ public class MenegerModify : MonoBehaviour
 
     public int FreeIndexPlayer;
 
+    [SerializeField] string keyPlayer = "Player";
+    [SerializeField] string keyFirstStartGame = "FirstGame";
+
+
+
     void Start()
     {
+        
+        // Проверяем, какие персонажи были ранее куплены и активируем их.
+        for (int characterIndex = 0; characterIndex < Players.Length; characterIndex++)
+        {
+            if (IsCharacterPurchased(characterIndex))
+            {
+                ActivateCharacter(characterIndex);
+            }
+        }
+        if (PlayerPrefs.GetInt(keyFirstStartGame, 0) == 1)
+        {
+
+        }
+        else
+        {
+            Debug.LogError("addCoins + 2000");
+            updateCoinsGame(2000);
+            PlayerPrefs.SetInt(keyFirstStartGame, 1);
+        }
         GetSpecificalPlayer(1);
         getCoins();
     }
 
+    // Проверка, был ли персонаж куплен ранее.
+    private bool IsCharacterPurchased(int characterIndex)
+    {
+        return PlayerPrefs.GetInt(keyPlayer + characterIndex, 0) == 1;
+    }
+
+    // Активация персонажа в игре.
+    private void ActivateCharacter(int characterIndex)
+    {
+        // Ваш код для активации персонажа по индексу.
+        Players[characterIndex].GetComponent<PlayerShooter>().purchased = true;
+        Debug.LogError(Players[characterIndex].name);
+    }
     private void getCoins()
     {
        coins= PlayerPrefs.GetInt("KeyCoins");
@@ -61,6 +98,7 @@ public class MenegerModify : MonoBehaviour
     {
         PlayerPrefs.SetInt("KeyCoins", coins);
         PlayerPrefs.Save();
+        
     }
 
     void Update()
@@ -76,7 +114,7 @@ public class MenegerModify : MonoBehaviour
         float fareDamage = playerShooter.damagePerShootable;
         purchasedPlayer = playerShooter.purchased;
         costPlayer = playerShooter.CostPlayer;
-        //Debug.LogError(accuracy + "  " + rateOffare+"  "+ fareDamage);
+        //Debug.LogError(accuracy + "  " + rateOffare + "  " + fareDamage+" "+ costPlayer);
         ShowSpecifical(accuracy, rateOffare, fareDamage,costPlayer);
     }
 
@@ -90,7 +128,10 @@ public class MenegerModify : MonoBehaviour
         coinsText.text = CoinsGetForPay.ToString();
         bool TruyBuy = checkBuyPlayers;
 
-
+        //if (costPlayer == 5000000)
+        //{
+        //    costPlayerText.text = "в работе";
+        //}
         if (!TruyBuy)       //можно ли купить игрока
         {
             buyPlayers.interactable = false;
@@ -103,6 +144,8 @@ public class MenegerModify : MonoBehaviour
         if (purchasedPlayer)        //кнопка старта игры
         {
             StartGame.interactable = true;
+            buyPlayers.interactable = false;
+            costPlayerText.text = " ";
         }
         else
         {
@@ -127,7 +170,36 @@ public class MenegerModify : MonoBehaviour
         updateCoinsGame(-playerShooter.CostPlayer);
         playerShooter.purchased = true;
         GetSpecificalPlayer(FreeIndexPlayer);
+        PurchaseCharacter(FreeIndexPlayer - 1);
         Debug.LogError("BuyPlayer");
     }
 
+    
+
+    // Покупка персонажа и сохранение информации о покупке в PlayerPrefs.
+    public void PurchaseCharacter(int characterIndex)
+    {
+        if (characterIndex >= 0 && characterIndex < Players.Length)
+        {
+            PlayerPrefs.SetInt(keyPlayer + characterIndex, 1); // 1 - персонаж куплен
+            PlayerPrefs.Save();
+            ActivateCharacter(characterIndex);
+        }
+    }
+
+    public void ResetGame()
+    {
+        updateCoinsGame(-coins);
+        for (int characterIndex = 0; characterIndex < Players.Length; characterIndex++)
+        {
+            Players[characterIndex].GetComponent<PlayerShooter>().purchased = false;
+            PlayerPrefs.SetInt(keyPlayer + characterIndex, 0); // 0 - персонаж удален
+            PlayerPrefs.Save();
+            
+        }
+        PlayerPrefs.SetInt("KeyLevel", 1);
+        print("leve 1");
+        PlayerPrefs.Save();
+        updateCoinsGame(2000);
+    }
 }

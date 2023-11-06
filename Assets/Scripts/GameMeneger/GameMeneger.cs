@@ -258,6 +258,7 @@ public class GameMeneger : MonoBehaviour
         if (Time.timeScale < 1) Time.timeScale = 1;
         LastLevel = SceneManager.GetActiveScene().buildIndex + 1;
         PlayerPrefs.SetInt(KeyStringLastLevel,LastLevel);
+        Debug.LogError("active scene " + LastLevel);
         PlayerPrefs.Save();
         SceneManager.LoadScene(LastLevel);
     }

@@ -12,8 +12,9 @@ public class PlayerCrowd : MonoBehaviour
     [SerializeField] private int crowdSizeForDebug = 5;
     [Header("Стартовые данные")]
     [SerializeField] private int startingCrowdSize = 1;
-    [Range(1, 3)]
+    [Range(1, 4)]
     [SerializeField] private int startIndexShoot;
+    [SerializeField] string KeyStringActivePlayer = "KeyPlayer";
 
     [SerializeField] private PlayerShooter[] shooterPrefabs;
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
@@ -30,6 +31,8 @@ public class PlayerCrowd : MonoBehaviour
     private float _year;
     private float _recharge;
 
+    private bool _minPosition;
+
     [Header("Расчет энергии")]
     [SerializeField] MenegerEnergy _energy;
 
@@ -42,6 +45,8 @@ public class PlayerCrowd : MonoBehaviour
         //Invoke("SetEnergy", .5f);
         //SetEnergy();
         Invoke("SetEnergy", .2f);
+        
+        Debug.LogError(startIndexShoot);
 
     }
 
@@ -72,12 +77,19 @@ public class PlayerCrowd : MonoBehaviour
     public void Set(int amount)
     {
         if (_shooters.Count == amount) return;
+
         bool needToRemove = amount < _shooters.Count;
         bool needToAdd = amount > _shooters.Count;
+
         while (amount != _shooters.Count)
         {
             if (needToRemove) RemoveShooter();
-            else if (needToAdd) AddShooter(startIndexShoot);
+            else if (needToAdd)
+            {
+                startIndexShoot = PlayerPrefs.GetInt(KeyStringActivePlayer);
+                Debug.LogError(startIndexShoot+" addshot");
+                AddShooter(startIndexShoot);
+            }
         }
        
     }
@@ -112,6 +124,7 @@ public class PlayerCrowd : MonoBehaviour
 
     public void AddShooter(int index)
     {
+        Debug.LogError(index);
         if (!CanAdd()) return;
         int lastShooterIndex = _shooters.Count - 1;
         Vector3 position = spawnPoints[lastShooterIndex + 1].position;
@@ -128,13 +141,17 @@ public class PlayerCrowd : MonoBehaviour
     }
     void ColliderPlus()
     {
+        
         PlayerColider.size=new Vector3(2.5f,1,1);
+        if (_minPosition) return;
         _movingPlayer.maxPositionX -= 2f;
+        _minPosition = true;
     }
     void ColliderMinus()
     {
         PlayerColider.size = new Vector3(1f, 1, 1);
         _movingPlayer.maxPositionX += 2f;
+        _minPosition = false;
     }
 
     public void SetEnergy()
