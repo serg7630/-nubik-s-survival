@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5407309757850612223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.085, y: 1, z: -0.056}
+  m_LocalRotation: {x: 0.48101822, y: 0.48101905, z: -0.51828676, w: 0.5182866}
+  m_LocalPosition: {x: -0.095, y: 1.255, z: 0.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8699039690781840821}
+  m_Father: {fileID: 7387635348807208342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6993138354170145405
 PrefabInstance:
@@ -102,8 +102,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 22369263effceef48bdc78440af76c47, type: 3}
-      insertIndex: -1
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 22369263effceef48bdc78440af76c47, type: 3}
+      insertIndex: 0
       addedObject: {fileID: 2986416108310532986}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 22369263effceef48bdc78440af76c47, type: 3}
@@ -119,6 +119,11 @@ PrefabInstance:
 --- !u!95 &3487488025975855084 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 22369263effceef48bdc78440af76c47, type: 3}
+  m_PrefabInstance: {fileID: 6993138354170145405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7387635348807208342 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 22369263effceef48bdc78440af76c47, type: 3}
   m_PrefabInstance: {fileID: 6993138354170145405}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7912252360308922156 stripped
@@ -145,7 +150,7 @@ MonoBehaviour:
   GoalTarget: {fileID: 0}
   SpeedRotation: 4
   defaultShootDelay: 0.4
-  damagePerShootable: 26
+  damagePerShootable: 36
   shootablePrefab: {fileID: 3618394322625594068, guid: f4c7cda6bd34fdd4787bd8c3dd85eab6, type: 3}
   shootFrom: {fileID: 2986416108310532986}
   damageAddPerYear: 2
@@ -207,8 +212,3 @@ CapsuleCollider:
   m_Height: 1.8180807
   m_Direction: 1
   m_Center: {x: 0.019531667, y: 0.8668648, z: -0.00011822581}
---- !u!4 &8699039690781840821 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 22369263effceef48bdc78440af76c47, type: 3}
-  m_PrefabInstance: {fileID: 6993138354170145405}
-  m_PrefabAsset: {fileID: 0}

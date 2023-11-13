@@ -29,7 +29,11 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (ItSLate) return;
         _currentHitPoints -= damage;
-        if(healtBar) healtBarEnemy.SetValue(_currentHitPoints);
+        if (healtBar)
+        {
+            Debug.LogError(_currentHitPoints);
+            healtBarEnemy.SetValue(_currentHitPoints);
+        }
         if (_currentHitPoints <= 0f)
         {   if (_dead) return;
             //Debug.LogError("Dead "+ gameObject.name);

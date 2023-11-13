@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149423118685697233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.49853268, y: 0.49853423, z: -0.5014612, w: 0.50146335}
+  m_LocalPosition: {x: -0.147, y: 1.256, z: 0.363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9154451664444426282}
+  m_Father: {fileID: 7004277189615489033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7403506033678252002
 PrefabInstance:
@@ -214,8 +214,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6f9b7158995ca344794b1187d4d50ccb, type: 3}
-      insertIndex: -1
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f9b7158995ca344794b1187d4d50ccb, type: 3}
+      insertIndex: 0
       addedObject: {fileID: 1502617880569384716}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f9b7158995ca344794b1187d4d50ccb, type: 3}
@@ -231,6 +231,11 @@ PrefabInstance:
 --- !u!95 &4022871337723415155 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 6f9b7158995ca344794b1187d4d50ccb, type: 3}
+  m_PrefabInstance: {fileID: 7403506033678252002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7004277189615489033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f9b7158995ca344794b1187d4d50ccb, type: 3}
   m_PrefabInstance: {fileID: 7403506033678252002}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7674098937046190771 stripped
@@ -252,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   purchased: 0
   PCrowd: {fileID: 0}
-  CostPlayer: 50000
+  CostPlayer: 100000
   CAE: {fileID: 0}
   GoalTarget: {fileID: 0}
   SpeedRotation: 8
@@ -319,8 +324,3 @@ CapsuleCollider:
   m_Height: 1.8180807
   m_Direction: 1
   m_Center: {x: 0.019531667, y: 0.8668648, z: -0.00011822581}
---- !u!4 &9154451664444426282 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6f9b7158995ca344794b1187d4d50ccb, type: 3}
-  m_PrefabInstance: {fileID: 7403506033678252002}
-  m_PrefabAsset: {fileID: 0}

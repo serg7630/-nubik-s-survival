@@ -376,4 +376,11 @@ public class GameMeneger : MonoBehaviour
         Victory = true;
         Invoke("GameVictory", 4f);
     }
+    public void RestartGame()
+    {
+        PlayerPrefs.SetInt(KeyStringLastLevel, 1);
+        Debug.LogError("active scene " + 1);
+        PlayerPrefs.Save();
+        loadSceneMainMenu();
+    }
 }
